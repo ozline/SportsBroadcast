@@ -17,7 +17,11 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">更多</a>
                 <dl class="layui-nav-child">
+                    <dd><a href="./announce.php">稿件发布</a></dd>
+                    <dd><a href="./radio.php">稿件总计</a></dd>
+                    <hr>
                     <dd><a href="./more.php">全部消息</a></dd>
+                    <hr>
                     <dd><a href="./mark.php">比赛成绩</a></dd>
                     <hr>
                     <dd><a href="http://www.fzbz.com.cn">官网</a></dd>
@@ -47,8 +51,8 @@
                                 <li>
                                     <div class="userFace"><img src="./img/fzbz1.png"></div>
                                     <div class="userSay">
-                                        <div class="inlineText">
-                                            <?php echo $row['post'] ?>
+                                        <div class="inlineText" >
+                                            <?php echo str_replace(PHP_EOL,"<br>",$row['post']); ?>
                                             <br><br>
                                             发布时间：<?php echo $row['time'] ?>
                                             <?php

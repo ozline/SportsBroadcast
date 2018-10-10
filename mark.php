@@ -17,7 +17,7 @@ include_once('conf.php');
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <link rel="stylesheet" href="./layui/css/layui.css">
     <link rel="stylesheet" href="./style.css">
-    <title>首页 - 福州八中运动会播报系统</title>
+    <title>成绩 - 福州八中运动会播报系统</title>
 </head>
 <body class="layui-layout-body">
 
@@ -29,6 +29,9 @@ include_once('conf.php');
             <li class="layui-nav-item">
                 <a href="javascript:;">更多</a>
                 <dl class="layui-nav-child">
+                    <dd><a href="./announce.php">稿件发布</a></dd>
+                    <dd><a href="./radio.php">稿件统计</a></dd>
+                    <hr>
                     <dd><a href="./more.php">全部消息</a></dd>
                     <dd><a href="./index.php">最新消息</a></dd>
                     <hr>
@@ -43,7 +46,6 @@ include_once('conf.php');
         <fieldset class="layui-elem-field layui-field-title">
             <legend>运动会成绩表&nbsp;&nbsp;<a href="javascript:document.location.reload()" class="layui-btn layui-btn-xs">立即刷新</a></legend>
         </fieldset>
-<!--                开始获取-->
                 <?php
                     $sql = mysqli_query($link,"select * from mark order by time desc");
                     while($row = mysqli_fetch_array($sql)) {
@@ -66,6 +68,7 @@ include_once('conf.php');
                         <thead>
                         <tr>
                             <th>排名</th>
+                            <th>成绩</th>
                             <th>姓名</th>
                             <th>班级</th>
                         </tr>
@@ -73,18 +76,39 @@ include_once('conf.php');
                         <tbody>
                         <tr>
                             <td><span class="layui-badge">冠军</span></td>
+                            <td><?php echo $row['A_mark'] ?></td>
                             <td><?php echo $row['A_name'] ?></td>
                             <td><?php echo $row['A_class'] ?></td>
                         </tr>
                         <tr>
                             <td><span class="layui-badge layui-bg-blue">亚军</span></td>
+                            <td><?php echo $row['B_mark'] ?></td>
                             <td><?php echo $row['B_name'] ?></td>
                             <td><?php echo $row['B_class'] ?></td>
                         </tr>
                         <tr>
                             <td><span class="layui-badge layui-bg-green">季军</span></td>
+                            <td><?php echo $row['C_mark'] ?></td>
                             <td><?php echo $row['C_name'] ?></td>
                             <td><?php echo $row['C_class'] ?></td>
+                        </tr>
+                        <tr>
+                            <td><span class="layui-badge layui-bg-gray">第4名</span></td>
+                            <td><?php echo $row['D_mark'] ?></td>
+                            <td><?php echo $row['D_name'] ?></td>
+                            <td><?php echo $row['D_class'] ?></td>
+                        </tr>
+                        <tr>
+                            <td><span class="layui-badge layui-bg-gray">第5名</span></td>
+                            <td><?php echo $row['E_mark'] ?></td>
+                            <td><?php echo $row['E_name'] ?></td>
+                            <td><?php echo $row['E_class'] ?></td>
+                        </tr>
+                        <tr>
+                            <td><span class="layui-badge layui-bg-gray">第6名</span></td>
+                            <td><?php echo $row['F_mark'] ?></td>
+                            <td><?php echo $row['F_name'] ?></td>
+                            <td><?php echo $row['F_class'] ?></td>
                         </tr>
                         </tbody>
                     </table>
@@ -108,12 +132,6 @@ include_once('conf.php');
 
     });
 </script>
-
-<!--<script>-->
-<!--    setTimeout(function(){-->
-<!--        location.reload();-->
-<!--    },20000);-->
-<!--</script>-->
 
 </body>
 
